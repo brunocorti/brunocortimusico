@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel=stylesheet href="./css/estilos.css">
+    <link rel="shortcut icon" href="./imagenes/favicon.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/3a6a7a1eda.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@200;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <header>
+        <h1>BRUNO CORTI
+            <div id="redes" class="animate__animated">
+                <a href="https://www.facebook.com/Brunocortimusica">
+                    <i class= "fa-brands fa-facebook fa-l"></i>
+                </a>
+        
+                <a href="https://twitter.com/BCorti_">
+                    <i class= "fa-brands fa-twitter fa-l"></i>
+                </a>
+        
+                <a href="https://www.instagram.com/brunocorti_/">
+                    <i class="fa-brands fa-instagram fa-l"></i>
+                </a>
+            </div>     
+        </h1>   
+    </header>     
+    <div class="nada">
+        ""
+    </div>
+    <br>
+    <nav class="menu">
+        <ul>
+            <li><a href="index.html" class="home">Home</a></li>
+            <li id=mimusica1><a href="mimusica.html" class="mimusica">Mi música</a>
+            </li> 
+            <li><a href="fechas.html" class="fechas">Próximas fechas</a></li>
+            <li><a href="contacto.html" class="contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <div class="container" id="app">
+        <br>
+        <h1 id="h1fechas" class="p-3 mb-2 bg-secondary text-white">Estas son mis próximas fechas!</h1>
+        <section v-if="errored">
+            <p>Lo sentimos, no es posible obtener la información en este momento, por favor intente nuevamente mas tarde</p>
+        </section>
+        <section v-else>
+            <div v-if="loading">Cargando....
+                <div class="spinner-border" role="status">
+                    <span class="sr-only"></span>
+                </div>
+            </div>
+            <div v-else class="p-3 mb-2 bg-secondary text-white">
+                <a href="create.html" class="btn btn-info">Nueva fecha</a>
+                <br><br>
+                <table class="table table-striped table-dark">
+                    <tr>
+                        <th>Dia / Mes</th>
+                        <th>Locacion</th>
+                        <th>Lugar</th>
+                        <th>Direccion</th>
+                        <th>Horario</th>
+                        <th>Acciones</th>
+                    </tr>
+                    <tr v-for="producto in fechas">
+                        <td>{{producto.dia}} / {{producto.mes}}</td>
+                        <td>{{producto.locacion}}</td>
+                        <td>{{producto.lugar}}</td>
+                        <td>{{producto.direccion}}</td>
+                        <td>{{producto.horario}}</td>
+                        <td>
+                            <a :href="'update.html?id='+producto.id+'&dia='+producto.dia+'&mes='+producto.mes+'&locacion='+producto.locacion+'&lugar='+producto.lugar+'&direccion='+producto.direccion+'&horario='+producto.horario" class="btn btn-primary">Modificar</a>
+                            <button v-on:click="eliminar(producto.id)" class="btn btn-danger">Eliminar</button>
+                        </td>
+                    </tr>
+                </table>
+        </section>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</main>
+<script src="./js/main.js"></script>
+</body>
+</html>
