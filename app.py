@@ -34,7 +34,7 @@ class FechaSchema(ma.Schema):
         fields=('id','dia','mes','locacion','lugar','direccion','horario')
 fecha_schema=FechaSchema()            # para crear un producto
 fechas_schema=FechaSchema(many=True)  # multiples registros
-@app.route('/fechas',methods=['GET'])
+@app.route('/',methods=['GET'])
 def get_Fechas():
     all_fechas=Fecha.query.all()     # query.all() lo hereda de db.Model
     result=fechas_schema.dump(all_fechas)  # .dump() lo hereda de ma.schema
@@ -44,7 +44,7 @@ def get_fecha(id):
     fecha=Fecha.query.get(id)
     return fecha_schema.jsonify(fecha)
 
-@app.route('/fechas', methods=['POST']) # crea ruta o endpoint
+@app.route('/', methods=['POST']) # crea ruta o endpoint
 def create_fecha():
     print(request.json)  # request.json contiene el json que envio el cliente
     dia=request.json['dia']
@@ -58,7 +58,7 @@ def create_fecha():
     db.session.commit()
     return fecha_schema.jsonify(new_fecha)
 
-@app.route('/fechas/<id>' ,methods=['PUT'])
+@app.route('/' ,methods=['PUT'])
 def update_fecha(id):
     fecha=Fecha.query.get(id)
    
@@ -78,7 +78,7 @@ def update_fecha(id):
     db.session.commit()
     return fecha_schema.jsonify(fecha)
 
-@app.route('/fecha/<id>',methods=['DELETE'])
+@app.route('/',methods=['DELETE'])
 def delete_fecha(id):
     fecha=Fecha.query.get(id)
     db.session.delete(fecha)
