@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bruno Corti - Sitio web oficial</title>
+    <link rel=stylesheet href="./css/estilos.css">
+    <link rel="shortcut icon" href="./imagenes/favicon.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/3a6a7a1eda.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@200;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>  
+</head>
+<body>
+    <header>
+        <h1>BRUNO CORTI
+            <div id="redes" class="animate__animated">
+                <a href="https://www.facebook.com/Brunocortimusica">
+                    <i class= "fa-brands fa-facebook fa-l"></i>
+                </a>
+        
+                <a href="https://twitter.com/BCorti_">
+                    <i class= "fa-brands fa-twitter fa-l"></i>
+                </a>
+        
+                <a href="https://www.instagram.com/brunocorti_/">
+                    <i class="fa-brands fa-instagram fa-l"></i>
+                </a>
+            </div>     
+        </h1>   
+    </header>     
+    <div class="nada">
+        ""
+    </div>
+    <br>
+    <nav class="menu">
+        <ul>
+            <li><a href="main.html" class="home">Home</a></li>
+            <li id=mimusica1><a href="mimusica.html" class="mimusica">Mi música</a>
+            </li> 
+            <li><a href="index.html" class="fechas">Próximas fechas</a></li>
+            <li><a href="contacto.html" class="contacto">Contacto</a></li>
+        </ul>
+    </nav> <br><br>
+    <div class="medio">
+        <div class="noticias">
+            <h3>ÚLTIMAS NOTICIAS:</h3>
+            <script src="noticias.js"></script>
+        </div>
+        <div class="descripcion" class="animate__animated animate__fadeOut" onclick="cambiarTexto(this)">Hacé click para saber sobre mí!</div>
+            <script id="descripcion3">
+                function cambiarTexto(id){
+                    id.innerHTML = "<p>Bruno Corti es un músico oriundo de la ciudad de La Plata, provincia de Buenos Aires, Argentina. Sus primeros estudios musicales datan del año 2010, cuando arrancó a tomar clases de guitarra en la Escuela de Guitarra de Pablo Malek, en su ciudad.<br><br> En el año 2017 empieza a estudiar en la Facultad de Artes, Universidad Nacional de La Plata, en la carrera de Profesorado en Música Popular. Ese mismo año arranca su trayectoria murguera, cuando se integra a la Murga Vuelta y Vuelta. <br><br>Este recorrido por el arte popular y rioplatense definiría su estilo como músico, cuando en el año 2020 saca su EP Capa tras Capa, como antesala del lanzamientode su primer disco, Ansiedad Visual, en el año 2021.<br><br>Actualmente se encuentra cantando en Murga La ReTirada, además de en su proyecto solista."
+                }
+            </script>
+        </div>
+        <aside> 
+            <div class="photos">
+            <img class="photo1" src="imagenes/IMG_4172.jpg" width=190 height=140>
+            <img class="photo2" src="imagenes/IMG_4098.jpg" width=190 height=140>
+            </div>
+        </aside>      
+    </div>
+    <footer>
+    <iframe class="spotify" src="https://open.spotify.com/embed/album/3O3EmpVZvOmtXCeRO2suiF" width="800" height="200" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    </footer>
+</body>
+</html>
