@@ -1,11 +1,12 @@
-from flask import Flask ,jsonify,request
+from flask import Flask ,jsonify,request, render_template
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
-app=Flask(__name__)
+app=Flask(__name__, template_folder='templates', static_folder='static')
+
 CORS(app)
 # configuro la base de datos, con el nombre el usuario y la clave
-app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://sql10505112:k6mZvI1jN9@sql10.freesqldatabase.com/sql10505112'
+app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://brunocorti:RSTv&v17PSD@brunocorti.mysql.pythonanywhere-services.com/brunocorti$fechas'
 #                                               user:clave@localhost/nombreBaseDatos
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 db= SQLAlchemy(app)
@@ -34,12 +35,17 @@ class FechaSchema(ma.Schema):
         fields=('id','dia','mes','locacion','lugar','direccion','horario')
 fecha_schema=FechaSchema()            # para crear un producto
 fechas_schema=FechaSchema(many=True)  # multiples registros
-@app.route('/',methods=['GET'])
+
+@app.route("/", methods=["GET"])
+def index():
+        return "Hola Mundo"
+
+@app.route('/fechas',methods=['GET'])
 def get_Fechas():
     all_fechas=Fecha.query.all()     # query.all() lo hereda de db.Model
     result=fechas_schema.dump(all_fechas)  # .dump() lo hereda de ma.schema
     return jsonify(result)
-@app.route('/<id>',methods=['GET'])
+@app.route('/fechas/<id>',methods=['GET'])
 def get_fecha(id):
     fecha=Fecha.query.get(id)
     return fecha_schema.jsonify(fecha)
